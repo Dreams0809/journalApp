@@ -1,0 +1,40 @@
+﻿#header, .words{
+    display:flex;
+    justify-content: center;
+    font-family: 'Oleo Script', cursive;
+}
+  
+body{
+   background-color:rgb(215, 177, 165)
+}
+  
+.info{
+    padding-left: 75px;
+    font-family: 'Oleo Script', cursive;
+}
+  
+h1{
+    font-size: 100px;
+    font-family: 'Oleo Script', cursive;
+}
+  
+h3{
+    font-size: 48px;
+    font-family: 'Oleo Script', cursive;
+}
+  
+button, #imageUpload, .label, .post{
+    font-size:30px;
+    font-family: 'Oleo Script', cursive;
+}
+  
+div > h1{
+    display:flex;
+    justify-content: center
+}
+  
+.container{
+    display:flex;
+    justify-content: center;
+    
+}

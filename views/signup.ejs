@@ -1,23 +1,54 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="public/css/signup.css">
+      
+      <title></title>
+  </head>
+  <body>
+    
+    <h1 id="header"> Start Your Journey Here! <h1>
+    
     <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <form action="/signup" method="POST">
-        <input type="text" name="userName" placeholder="User Name">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirmPassword" placeholder="Confirm Password">
-        <input type="submit">
-    </form>
-</body>
+          <% messages.errors.forEach( el => { %>
+              <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %>    
+      <% } %>
+      
+        <form action="/signup" method="POST">
+          <div class="container">
+            <label class="label"> User Name:
+              <input type="text" name="userName" placeholder="User Name">
+            </label>
+            <label class="label"> Email:
+              <input type="email" name="email" placeholder="Email">
+            </label>
+            <label class="label"> Password:
+              <input type="password" name="password" placeholder="Password">
+            </label>
+            <label class="label"> Confrim Password:
+              <input type="password" name="confirmPassword" placeholder="Confirm Password">
+            </label>
+            <input type="submit" id="submit" style="height:50px; width:50px; padding-left:10px">
+          </div>
+        </form>
+      </div>
+      
+      <div class="circle"> 
+          <blockquote class="text quote" cite"https://www.goodhousekeeping.com/life/a39739060/mental-health-quotes/">
+            <p> Happiness can be found even in the darkest of times.<p>
+            <p> if one only remembers to turn on the light. </p>
+            <footer>   — Albus Dumbledore </footer>
+          </blockquote>
+      </div>
+      
+      
+      <script src="public/js/signup.js"></script>
+  </body>
 </html>

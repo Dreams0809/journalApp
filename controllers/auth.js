@@ -2,16 +2,16 @@
 const validator = require('validator')
 const User = require('../Models/User')
 
- exports.getLogin = (req, res) => {
+exports.getLogin = (req, res) => {
     if (req.user) {
-      return res.redirect('/home')
+      return res.redirect('/profile')
     }
     res.render('login', {
       title: 'Login'
     })
-  }
+}
   
-  exports.postLogin = (req, res, next) => {
+exports.postLogin = (req, res, next) => {
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
@@ -31,7 +31,7 @@ const User = require('../Models/User')
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/home')
+        res.redirect(req.session.returnTo || '/profile')
       })
     })(req, res, next)
   }
@@ -43,16 +43,16 @@ const User = require('../Models/User')
     req.session.destroy((err) => {
       if (err) console.log('Error : Failed to destroy the session during logout.', err)
       req.user = null
-      res.redirect('/home')
+      res.redirect('/')
     })
   }
   
   exports.getSignup = (req, res) => {
     if (req.user) {
-      return res.redirect('/home')
+      return res.redirect('/profile')
     }
     res.render('signup', {
-      title: 'Create Account'
+      title: 'Create Account',
     })
   }
   
@@ -89,7 +89,7 @@ const User = require('../Models/User')
           if (err) {
             return next(err)
           }
-          res.redirect('/home')
+          res.redirect('/profile')
         })
       })
     })

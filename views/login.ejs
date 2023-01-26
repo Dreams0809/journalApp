@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap"            rel="stylesheet">
+      <link rel="stylesheet" href="public/css/login.css">
+      <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header"> Welcome ! <h1>
+      
+      <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el => { %>
+              <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %>    
+      <% } %>
+      <% if (locals.messages.info) { %>
+          <% messages.info.forEach( el => { %>
+              <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %>    
+      <% } %>
+      
+      <form action="/login" method="POST">
+        <label class="label"> Email:
+          <input type="email" name="email" placeholder="Email">
+        </label>
+        <label class="label"> Password:
+          <input type="password" name="password" placeholder="Password">
+        </label>
+          <input type="submit">
+      </form>
+    
+      <div class="circle"> 
+          <blockquote class="text quote" cite"https://www.goodhousekeeping.com/life/a39739060/mental-health-quotes/">
+            <p> Vulnerability sounds like truth and feels like courage<p>
+            <p> Truth and courage aren’t always comfortable, </p>
+            <p> but they're never weakness. </p>
+            <footer>    — Brené Brown </footer>
+          </blockquote>
+      </div>
+      <script src="public/js/login.js"> </script>
+  </body>
+</html>

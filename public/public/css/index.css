@@ -1,0 +1,46 @@
+﻿body{
+    background-size: contain;
+}
+.header{
+    display: Flex;
+    Justify-content: center;
+    font-family: 'Oleo Script', cursive;
+    
+}
+  
+  
+  /* Quotes */
+.cirlce{
+    height: 300px;
+    position: relative;
+    width: 300px;
+    padding-top:10px;
+}
+  
+.quote{
+    padding-top: 150px;
+    padding-left: 120px;
+    font-family: 'Oleo Script', cursive;
+}
+  
+#container{
+    display:flex;
+    justify-content: center;
+}
+  
+  
+  
+.container{
+    font-size: 25px;
+    padding: 450px;
+    display: flex;
+    justify-content:center;
+    justify-content:space-evenly;
+    font-family: 'Oleo Script', cursive;
+}
+
+p, footer, a{
+    color:white;
+    font-size: 25px;
+}
+  
