@@ -31,4 +31,21 @@ h2{
 }
 
 
-  
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+
+section{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    font-family: 'Oleo Script', cursive;
+}
+
+.story{
+    color: blue;
+}

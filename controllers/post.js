@@ -1,7 +1,10 @@
-﻿const cloudinary = require("../middleware/cloudinary");
+﻿const { image } = require("../middleware/cloudinary");
+const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const Story = require("../models/Story")
+const Comment = require("../models/Comment")
 
-// createdAt: "desc"
+
 module.exports = {
   getProfile: async (req, res) => {
     try {
@@ -15,8 +18,19 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc"}).lean();
-      res.render("feed.ejs", { posts: posts, user: req.user });
+      const story = await Story.find().sort({ createdAt: "desc"}).lean();
+      res.render("feed.ejs", { posts: posts, user: req.user, story: story });
     } catch (err) {
+      console.log(err);
+    }
+  },
+
+  getComment: async (req, res) =>{
+    try{
+      const story = await Story.find().sort({ createdAt: "desc"}).lean();
+      const comment = await Comment.find({ user: req.user.id }); 
+      res.render("comments.ejs", {user: req.user, comment:comment, story: story})
+    } catch (err){
       console.log(err);
     }
   },
@@ -29,17 +43,52 @@ module.exports = {
       console.log(err);
     }
   },
+
+  createComment: async (req,res) => {
+    try{
+      await Comment.create({
+        comment:req.body.comment
+      });
+      console.log("Comment has been added!");
+      res.redirect("/comments");
+    } catch (err){
+      console.log(err)
+    }
+  },
+
+  createStory: async (req,res) => {
+    try{
+      await Story.create({
+        story: req.body.story
+      });
+      console.log("Story has been added");
+      res.redirect("/feed");
+    } catch (err){
+      console.log(err);
+    }
+  },
   
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-
+      let img 
+      let imageId
+      let result
+      if( req.file != undefined){
+        result = await cloudinary.uploader.upload(req.file.path);
+        img = result.secure_url
+        imageId = result.public_id
+      }else{
+        console.log("Else has started")
+        img = ""
+        imageId = ""
+      }
+    
       await Post.create({
         title: req.body.title,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
-        body: req.body.caption,
+        image: img, 
+        cloudinaryId: imageId,
+        body: req.body.body,
         likes: 0,
         user: req.user.id,
       });
@@ -49,6 +98,10 @@ module.exports = {
       console.log(err);
     }
   },
+
+
+  
+
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(

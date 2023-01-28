@@ -1,0 +1,34 @@
+﻿body{
+    background-color: #FFCEFE;
+}
+
+h2{
+    font-family: 'Oleo Script', cursive;
+    display: flex;
+    justify-content: center;
+}
+
+
+nav > ul{
+    display:flex;
+    justify-content: flex-end;
+    list-style: none;
+    font-family: 'Oleo Script', cursive;
+    gap: 10px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+
+.comment{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.comments{
+    color: blue;
+}

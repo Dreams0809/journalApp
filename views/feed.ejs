@@ -20,25 +20,42 @@
       <ul>
         <li class="header"><a href="/profile"> Profile </a></li>
         <li class="header"><a href="/logout"> Logout </a></li>
+
       </ul>
     </nav>
     
     <h1 class="header"> MyFeed </h1>
+
+
+    <section>
+      <form  action="/post/createStory"  method="POST">
+        <div>
+          <textarea name="story" placeholder="What's on your mind ?"> </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" value="Upload">Submit</button> 
+      </form>
+    </section>
+
+
+
+    
       
       
     <div class="container">
       <div>
         <ul>
-          <% for(var i=0; i<posts.length; i++) {%>
+          <% for(var i=0; i<story.length; i++) {%>
               <li class="">
-                posts[i].title
-                posts[i].body
+                <h1> <%= user.userName %></h1>
+                <span class="story"> <%= story[i].story %> </span>  
+                <span> <%= story[i].createdAt %> </span>
+                    <h3><a href="/comments"> Comment </a></h3>
               </li>
           <% } %>
         </ul>
       </div>
     </div>
-                
+              
         
         
     

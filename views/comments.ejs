@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/comments.css">
+    <title>Comments</title>
+</head>
+<body>
+
+    <nav>
+        <h2> <%= user.userName %> Comments</h2>
+        
+        <ul>
+          <li class="header"><a href="/profile"> Profile </a></li>
+          <li class="header"><a href="/logout"> Logout </a></li>
+          <li class="header"><a href="/feed"> Feed </a></li>
+        </ul>
+      </nav>
+
+
+        
+        <div class="container">
+          <div>
+            <ul>
+              <% for(var i=0; i<story.length; i++) {%>
+                  <li class="">
+                    <h1> <%= user.userName %></h1>
+                    <span class="story"> <%= story[i].story %> </span>  
+                    <span> <%= story[i].createdAt %> </span>
+                  </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+        
+
+
+
+      <div class="container">
+        <form action="/post/createComment" method="POST">
+          <textarea type="text" class="form-control" id="title" name="comment"></textarea>
+          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+        </form>
+      </div>
+
+      
+      <div>
+        <ul class="column">
+          <% for(var i=0; i<comment.length; i++) {%>
+            <li class="comment">
+              <h1> <%= user.userName %> comment</h1>
+              <span class="comments"> <%= comment[i].comment %> </span>
+              <span> <%= comment[i].createdAt %> </span>
+              <img class="img-fluid" src="<%= posts[i].image%>">
+            </li>
+          <% } %>
+          </ul>
+      </div>  
+    
+</body>
+</html>

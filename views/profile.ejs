@@ -33,7 +33,7 @@
               </div>
               
               <div>
-                <label for="caption" class="label">Body:</label>
+                <label for="body" class="label">Body:</label>
                 <textarea class="form-control" id="caption" name="body"></textarea>
               </div>
             
@@ -54,9 +54,9 @@
             <ul class="column">
               <% for(var i=0; i<posts.length; i++) {%>
                 <li class="">
-                  <span> posts[i].title </span>
-                    <p> posts[i].body<p>
-                      <span> posts[i].createdAt </span>
+                  <span> <%= posts[i].title %> </span>
+                    <p> <%= posts[i].body %> <p>
+                      <span> <%= posts[i].createdAt %> </span>
                         <img class="img-fluid" src="<%= posts[i].image%>">
                 </li>
               <% } %>

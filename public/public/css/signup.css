@@ -1,5 +1,7 @@
 ﻿body{
-    background-size: contain;
+    background-image: url(https://images.theconversation.com/files/223729/original/file-20180619-126566-1jxjod2.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #header, .circle, .label, #submit{
