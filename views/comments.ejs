@@ -18,21 +18,15 @@
           <li class="header"><a href="/logout"> Logout </a></li>
           <li class="header"><a href="/feed"> Feed </a></li>
         </ul>
-      </nav>
+    </nav>
 
 
         
         <div class="container">
-          <div>
-            <ul>
-              <% for(var i=0; i<story.length; i++) {%>
-                  <li class="">
+          <div>                   
                     <h1> <%= user.userName %></h1>
-                    <span class="story"> <%= story[i].story %> </span>  
-                    <span> <%= story[i].createdAt %> </span>
-                  </li>
-              <% } %>
-            </ul>
+                    <span class="story"> <%= story.story %> </span>  
+                    <span> <%= story.createdAt %> </span>
           </div>
         </div>
         
@@ -41,6 +35,7 @@
 
       <div class="container">
         <form action="/post/createComment" method="POST">
+          <input type="hidden" value="<%= story._id %>" name="storyId">
           <textarea type="text" class="form-control" id="title" name="comment"></textarea>
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
         </form>
@@ -52,9 +47,8 @@
           <% for(var i=0; i<comment.length; i++) {%>
             <li class="comment">
               <h1> <%= user.userName %> comment</h1>
-              <span class="comments"> <%= comment[i].comment %> </span>
+              <p class="comments"> <%= comment[i].comment %> </p>
               <span> <%= comment[i].createdAt %> </span>
-              <img class="img-fluid" src="<%= posts[i].image%>">
             </li>
           <% } %>
           </ul>

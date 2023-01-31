@@ -24,11 +24,11 @@ module.exports = {
       console.log(err);
     }
   },
-
+ 
   getComment: async (req, res) =>{
     try{
-      const story = await Story.find().sort({ createdAt: "desc"}).lean();
-      const comment = await Comment.find({ user: req.user.id }); 
+      const story = await Story.findOne({ id:req.params.id})
+      const comment = await Comment.find({ storyId: req.params.id });  
       res.render("comments.ejs", {user: req.user, comment:comment, story: story})
     } catch (err){
       console.log(err);
@@ -46,11 +46,13 @@ module.exports = {
 
   createComment: async (req,res) => {
     try{
+  
       await Comment.create({
-        comment:req.body.comment
+        comment:req.body.comment,
+        storyId: req.body.storyId
       });
       console.log("Comment has been added!");
-      res.redirect("/comments");
+      res.redirect(`/comments/${req.body.storyId}`);
     } catch (err){
       console.log(err)
     }
