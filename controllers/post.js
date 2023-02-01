@@ -37,8 +37,9 @@ module.exports = {
   
   getPost: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const story = await Story.findOne({ id:req.params.id})
+      const comment = await Comment.find({ storyId: req.params.id });  
+      res.render("comments.ejs", { story: story, comment: comment, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +62,8 @@ module.exports = {
   createStory: async (req,res) => {
     try{
       await Story.create({
-        story: req.body.story
+        story: req.body.story,
+        likes: 0
       });
       console.log("Story has been added");
       res.redirect("/feed");
@@ -106,18 +108,19 @@ module.exports = {
 
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
+      await Story.findOneAndUpdate(
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
   },
+
   deletePost: async (req, res) => {
     try {
       // Find post by id

@@ -20,14 +20,15 @@ nav > ul{
 .container{
     display: flex;
     justify-content: center;
-}
+} 
 
 
 .comment{
+    padding-top: 100px;
+    padding-left: 500px;
     list-style: none;
-    display: flex;
-    justify-content: center;
-}
+    
+} 
 
 .comments{
     color: blue;
@@ -36,3 +37,14 @@ nav > ul{
 .story{
     color: darkblue;
 }
+
+.commentSection{
+    display: flex;
+    justify-content: center;
+}
+
+
+.delete{
+    padding-left: 50px;
+}
+

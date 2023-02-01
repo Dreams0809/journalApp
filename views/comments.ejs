@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/comments.css">
+    <link rel="stylesheet" href="/public/css/comments.css">
     <title>Comments</title>
 </head>
 <body>
@@ -22,24 +22,37 @@
 
 
         
-        <div class="container">
-          <div>                   
-                    <h1> <%= user.userName %></h1>
-                    <span class="story"> <%= story.story %> </span>  
-                    <span> <%= story.createdAt %> </span>
-          </div>
-        </div>
+    <div class="container">
+      <div>                   
+        <h1> <%= user.userName %></h1>
+          <p class="story"> <%= story.story %> </p>   
+          <span> <%= story.createdAt %> </span>
+      </div>
+    </div>
         
 
 
 
       <div class="container">
-        <form action="/post/createComment" method="POST">
+        
+       
+        
+        <h3 class="col-3">Likes: <%= comment.likes %></h3>
+
+
+      
+      </div>
+      
+      <form action="/post/createComment" method="POST" class="commentSection">
           <input type="hidden" value="<%= story._id %>" name="storyId">
           <textarea type="text" class="form-control" id="title" name="comment"></textarea>
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-        </form>
-      </div>
+      </form>
+        
+        
+
+
+     
 
       
       <div>
@@ -49,9 +62,18 @@
               <h1> <%= user.userName %> comment</h1>
               <p class="comments"> <%= comment[i].comment %> </p>
               <span> <%= comment[i].createdAt %> </span>
+              
+             
+              
+             
+
             </li>
           <% } %>
-          </ul>
+        </ul>
+
+      
+
+
       </div>  
     
 </body>

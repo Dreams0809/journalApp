@@ -47,9 +47,16 @@
           <% for(var i=0; i<story.length; i++) {%>
               <li class="">
                 <h1> <%= user.userName %></h1>
-                <span class="story"> <%= story[i].story %> </span>  
+                <p class="story"> <%= story[i].story %> </p>  
+                <p> Likes: <%=story.likes %></p>
                 <span> <%= story[i].createdAt %> </span>
-                    <h3><a href="/comments/<%= story[i]._id %>"> Comment </a></h3>
+                <h3 class="grid"><a href="/comments/<%= story[i]._id %>"> Comment </a></h3> 
+                
+                
+                <form  class="col-1"  action="/post/likePost?_method=PUT"  method="POST">
+                  <button class="btn btn-primary fa fa-heart" type="submit"></button>
+                </form>
+               
                     
               </li>
           <% } %>

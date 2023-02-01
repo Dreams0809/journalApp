@@ -49,3 +49,9 @@ button{
 .story{
     color: blue;
 }
+
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
