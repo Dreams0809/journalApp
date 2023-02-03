@@ -50,7 +50,8 @@ module.exports = {
   
       await Comment.create({
         comment:req.body.comment,
-        storyId: req.body.storyId
+        storyId: req.body.storyId,
+        user: req.user._id,
       });
       console.log("Comment has been added!");
       res.redirect(`/comments/${req.body.storyId}`);
@@ -63,7 +64,8 @@ module.exports = {
     try{
       await Story.create({
         story: req.body.story,
-        likes: 0
+        likes: 0,
+        user: req.user._id,
       });
       console.log("Story has been added");
       res.redirect("/feed");
@@ -121,9 +123,9 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Find post by id
-      let story = await Story.findById({ _id: req.params.id });
+      let story = await Story.findOne({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(story.cloudinaryId);
+      // await cloudinary.uploader.destroy(story.cloudinaryId);
       // Delete post from db
       await Story.remove({ _id: req.params.id });
       console.log("Deleted Post");
@@ -132,4 +134,24 @@ module.exports = {
       res.redirect("/feed");
     }
   },
+
+
+  deleteComment: async (req, res) => {
+    try {
+      // Find post by id
+      let comment = await Comment.findOne({ _id: req.params.id });
+      // Delete image from cloudinary
+      // await cloudinary.uploader.destroy(story.cloudinaryId);
+      // Delete post from db
+      await Comment.remove({ _id: req.params.id });
+      console.log("Deleted Post");
+      res.redirect(`/comments/${req.body.storyId}`);
+    } catch (err) {
+      res.redirect(`/comments/${req.body.storyId}`);
+    }
+  }
+
+
+
+
 };

@@ -30,6 +30,7 @@
     <section>
       <form  action="/post/createStory"  method="POST">
         <div>
+          <input type="hidden" value="" name="user">
           <textarea name="story" placeholder="What's on your mind ?"> </textarea>
         </div>
         <button type="submit" class="btn btn-primary" value="Upload">Submit</button> 
@@ -52,16 +53,17 @@
                 <span> <%= story[i].createdAt %> </span>
                 <h3 class="grid"><a href="/comments/<%= story[i]._id %>"> Comment </a></h3> 
                 
-                
+                <h5> like button: </h5>
                 <form  class="col-1"  action="/post/likePost/<%=story[i]._id%>?_method=PUT"  method="POST">
                   <button class="btn btn-primary fa fa-heart" type="submit" aria-placeholder="Like"></button>
                 </form>
                 
-                
+                <h5> Delete button: </h55>
+                <%if(story[i].user.equals(user._id)){ %>
                 <form action="/post/deletePost/<%= story[i]._id%>?_method=DELETE" method="POST" class="col-3">  
                   <button class="btn btn-primary fa fa-trash" type="submit"></button>
                 </form>
-                
+                <%}%>
               </li>
           <% } %>
         </ul>

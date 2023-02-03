@@ -20,6 +20,9 @@ const StorySchema = new mongoose.Schema({
     type: String
   },
 
+
+
+
   // comment:{
   //   type:String
   // }

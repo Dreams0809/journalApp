@@ -45,6 +45,7 @@
       
       <form action="/post/createComment" method="POST" class="commentSection">
           <input type="hidden" value="<%= story._id %>" name="storyId">
+          <input type="hidden" value="" name="user">
           <textarea type="text" class="form-control" id="title" name="comment"></textarea>
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
       </form>
@@ -62,6 +63,12 @@
               <h1> <%= user.userName %> comment</h1>
               <p class="comments"> <%= comment[i].comment %> </p>
               <span> <%= comment[i].createdAt %> </span>
+
+              <%if(comment[i].user.equals(user._id)){ %>
+                <form action="/post/deletePost/<%= comment[i]._id%>?_method=DELETE" method="POST" class="col-3">  
+                  <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                </form>
+                <%}%>
               
              
               
