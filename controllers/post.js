@@ -108,12 +108,9 @@ module.exports = {
 
   likePost: async (req, res) => {
     try {
-      await Story.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
+      let story = await Story.findById(req.params.id)
+      story.likes++
+      await story.save()
       console.log("Likes +1");
       res.redirect("/feed");
     } catch (err) {
@@ -124,15 +121,15 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Find post by id
-      let post = await Post.findById({ _id: req.params.id });
+      let story = await Story.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+      await cloudinary.uploader.destroy(story.cloudinaryId);
       // Delete post from db
-      await Post.remove({ _id: req.params.id });
+      await Story.remove({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect("/feed");
     }
   },
 };

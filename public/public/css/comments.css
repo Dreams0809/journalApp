@@ -1,4 +1,7 @@
-﻿body{
+﻿*{
+    font-family: 'Oleo Script', cursive;
+}
+body{
     background-color: #FFCEFE;
 }
 

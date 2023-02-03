@@ -1,4 +1,8 @@
-﻿#header, .words{
+﻿*{
+    font-family: 'Oleo Script', cursive;
+}
+
+#header, .words{
     display:flex;
     justify-content: center;
     font-family: 'Oleo Script', cursive;

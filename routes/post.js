@@ -13,8 +13,8 @@ router.post("/createComment", upload.single("file"), postsController.createComme
 
 router.post("/createStory", postsController.createStory)
 
-// router.put("/likePost/:id", postsController.likePost);
-router.put("/likePost", postsController.likePost);
+router.put("/likePost/:id", postsController.likePost);
+// router.put("/likePost", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);
 
