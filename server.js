@@ -16,10 +16,6 @@ require('dotenv').config({path: './config/.env'})
 // Passport config
 require('./config/passport')(passport)
 
-// Connect to DB
-connectDB()
-
-
 // General Middleware
 app.use(cors())
 app.set('view engine', 'ejs')
@@ -55,6 +51,11 @@ app.use("/post", postRoutes)
 
 
 // Server
-app.listen(process.env.PORT, ()=>{
-    console.log(`Server running on port`)
-})
+connectDB().then(() => {
+    //Server Running
+    app.listen(process.env.PORT, () => {
+      console.log(
+        `Server is running on ${process.env.PORT}, you better catch it!`
+      );
+    });
+  });
