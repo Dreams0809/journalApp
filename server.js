@@ -11,7 +11,7 @@ const connectDB = require('./config/database')
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/post");
 const cors = require('cors')
-require('dotenv').config({path: './config/.env'})
+// require('dotenv').config({path: './config/.env'})
 
 // Passport config
 require('./config/passport')(passport)
