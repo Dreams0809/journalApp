@@ -66,7 +66,8 @@ module.exports = {
         story: req.body.story,
         likes: 0,
         user: req.user._id,
-      });
+        userName: req.user.UserName
+      }); 
       console.log("Story has been added");
       res.redirect("/feed");
     } catch (err){

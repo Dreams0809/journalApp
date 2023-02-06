@@ -30,7 +30,7 @@
     <section>
       <form  action="/post/createStory"  method="POST">
         <div>
-          <input type="hidden" value="" name="user">
+          <input type="hidden" value="" name="userName">
           <textarea name="story" placeholder="What's on your mind ?"> </textarea>
         </div>
         <button type="submit" class="btn btn-primary" value="Upload">Submit</button> 
@@ -47,7 +47,7 @@
         <ul>
           <% for(var i=0; i<story.length; i++) {%>
               <li class="">
-                <h1> <%= user.userName %></h1>
+                <h1> <%= story[i].userName %></h1>
                 <p class="story"> <%= story[i].story %> </p>  
                 <p> Likes: <%=story[i].likes %></p>
                 <span> <%= story[i].createdAt %> </span>

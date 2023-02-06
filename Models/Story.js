@@ -11,6 +11,13 @@ const StorySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+
+  username: {
+    type: String,
+    ref: "User"
+
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
