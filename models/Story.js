@@ -12,7 +12,7 @@ const StorySchema = new mongoose.Schema({
     ref: "User",
   },
 
-  username: {
+  userName: {
     type: String,
     ref: "User"
 
