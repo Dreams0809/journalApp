@@ -60,7 +60,7 @@
         <ul class="column">
           <% for(var i=0; i<comment.length; i++) {%>
             <li class="comment">
-              <h1> <%= user.userName %> comment</h1>
+              <h1> <%= comment[i].userName %> comment</h1>
               <p class="comments"> <%= comment[i].comment %> </p>
               <span> <%= comment[i].createdAt %> </span>
 

@@ -25,6 +25,14 @@ const CommentSchema = new mongoose.Schema({
     ref: "User",
   },
 
+  userName: {
+    type: String,
+    ref: "User"
+
+  },
+
+
+
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);
