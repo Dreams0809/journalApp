@@ -11,7 +11,8 @@
 <body>
 
     <nav>
-        <h2> <%= user.userName %> Comments</h2>
+      
+      <h2> <%= story.userName %> Comments</h2> 
         
         <ul>
           <li class="header"><a href="/profile"> Profile </a></li>
@@ -24,7 +25,7 @@
         
     <div class="container">
       <div>                   
-        <h1> <%= user.userName %></h1>
+        <h1> <%= story.userName %></h1>
           <p class="story"> <%= story.story %> </p>   
           <span> <%= story.createdAt %> </span>
       </div>
@@ -45,9 +46,8 @@
       
       <form action="/post/createComment" method="POST" class="commentSection">
           <input type="hidden" value="<%= story._id %>" name="storyId">
-          <input type="hidden" value="" name="user">
           <textarea type="text" class="form-control" id="title" name="comment"></textarea>
-          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
       </form>
         
         

@@ -27,7 +27,7 @@ const CommentSchema = new mongoose.Schema({
 
   userName: {
     type: String,
-    ref: "User"
+    ref: "Story"
 
   },
 

@@ -17,9 +17,9 @@ module.exports = {
   
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc"}).lean();
+      
       const story = await Story.find().sort({ createdAt: "desc"}).lean();
-      res.render("feed.ejs", { posts: posts, user: req.user, story: story });
+      res.render("feed.ejs", { user: req.user, story: story });
     } catch (err) {
       console.log(err);
     }
@@ -27,9 +27,10 @@ module.exports = {
  
   getComment: async (req, res) =>{
     try{
-      const story = await Story.findOne({ id:req.params.id})
+      
+      const story = await Story.findOne({ _id:req.params.id})
       const comment = await Comment.find({ storyId: req.params.id });  
-      res.render("comments.ejs", {user: req.user, comment:comment, story: story})
+      res.render(`comments.ejs`, {user: req.user, comment:comment, story: story })
     } catch (err){
       console.log(err);
     }
@@ -39,7 +40,7 @@ module.exports = {
     try {
       const story = await Story.findOne({ id:req.params.id})
       const comment = await Comment.find({ storyId: req.params.id });  
-      res.render("comments.ejs", { story: story, comment: comment, user: req.user });
+      res.render("indexx.ejs", { story: story, comment: comment, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -47,11 +48,13 @@ module.exports = {
 
   createComment: async (req,res) => {
     try{
-  
+      
       await Comment.create({
         comment:req.body.comment,
+        likes: 0,
         storyId: req.body.storyId,
         user: req.user._id,
+        userName: req.user.userName
       });
       console.log("Comment has been added!");
       res.redirect(`/comments/${req.body.storyId}`);
